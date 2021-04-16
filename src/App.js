@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
-import RecordList from "./components/RecordList";
-import RecordForm from "./components/RecordForm";
+
+import { useAuth0 } from "@auth0/auth0-react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import { ProtectedRoute } from "./components/auth/ProtectedRoute";
+import ClinicRecords from "./pages/ClinicRecords";
+import { Layout } from "./components/layout/Layout";
+import AppInfo from "./pages/AppInfo";
+import AccountInfo from "./pages/AccountInfo";
 
 function App() {
-  const [records, setCourses] = useState([]);
-
-  const loadRecords = async () => {
-    try {
-      const res = await fetch("/api/records");
-      const records = await res.json();
-      setCourses(records);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    loadRecords();
-  }, []);
+  const { isLoading } = useAuth0();
+  if (isLoading) {
+    return <p></p>;
+  }
   return (
-    <div className="container mt-5 mb-5">
-      <h1 className="mb-5 text-center">眼鏡システム</h1>
-      <RecordForm recordAdded={loadRecords} />
-      <RecordList records={records} refreshRecords={loadRecords} />
-    </div>
+    <Router>
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <ProtectedRoute path="/clinic-records" component={ClinicRecords} />
+          <ProtectedRoute path="/account-info" exact component={AccountInfo} />
+          <Route path="/app-info" exact component={AppInfo} />
+        </Switch>
+      </Layout>
+    </Router>
   );
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Course({ record, refreshRecords }) {
+export default function Record({ record, refreshRecords }) {
   // const formatted_birthday = record.birthday.replace(/-/g, " / ");
 
   const deleteRecord = async () => {
