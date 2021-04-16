@@ -15,8 +15,8 @@ const UserProfileDropdown = (props) => {
         <div>アカウント名：{user.name}</div>
       </Dropdown.Header>
       <NavDropdown.Divider />
-      <NavDropdown.Item href="#/action-2">Another action</NavDropdown.Item>
-      <NavDropdown.Item href="#/action-3">Something else</NavDropdown.Item>
+      {/* <NavDropdown.Item href="#/action-2">Another action</NavDropdown.Item>
+      <NavDropdown.Item href="#/action-3">Something else</NavDropdown.Item> */}
       <NavDropdown.Divider />
       <NavDropdown.Item>
         <div
