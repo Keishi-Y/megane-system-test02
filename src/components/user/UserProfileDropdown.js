@@ -12,7 +12,7 @@ const UserProfileDropdown = (props) => {
       id="basic-nav-dropdown"
     >
       <Dropdown.Header>
-        <div>アカウント名：{user.username}</div>
+        <div>アカウント名：{user.name}</div>
       </Dropdown.Header>
       <NavDropdown.Divider />
       {/* <NavDropdown.Item href="#/action-2">Another action</NavDropdown.Item>
