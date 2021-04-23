@@ -6,6 +6,7 @@ import {
   CardHeading,
   InfoCircle,
   PersonFill,
+  Eyeglasses,
 } from "react-bootstrap-icons";
 import TextWithIcon from "../text/TextWithIcon";
 
@@ -32,9 +33,14 @@ export const Links = () => {
     <Nav className="flex-column">
       <LinkItem pathname="/" pageName="Home" icon={<House />} />
       <LinkItem
-        pathname="/clinic-records"
+        pathname="/clinic-charts"
         pageName="カルテ編集"
         icon={<CardHeading />}
+      />
+      <LinkItem
+        pathname="/frame-info"
+        pageName="フレーム情報編集"
+        icon={<Eyeglasses />}
       />
       <LinkItem
         pathname="/account-info"

@@ -8,7 +8,7 @@ export const Layout = ({ children }) => {
       <Container>
         <Header />
         <Row>
-          <Col xs={2} style={{ minWidth: "200px" }}>
+          <Col xs={2} style={{ minWidth: "250px" }}>
             <Links />
           </Col>
           <Col xs={8}>{children}</Col>
