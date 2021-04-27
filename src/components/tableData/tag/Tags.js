@@ -1,17 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function Tags({ tagsUpdated, key }) {
-  const tagChoices = [
-    "セル（アセテート）",
-    "メタル（ステンレス・アルミ）",
-    "セル（TR-90）",
-    "メタル（チタン）",
-    "PES",
-    "ウルテム",
-    "PPSU",
-    "セルロイド",
-    "その他",
-  ];
+export default function Tags({ tagsUpdated, key, tagChoices }) {
   const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
@@ -35,8 +24,13 @@ export default function Tags({ tagsUpdated, key }) {
   return (
     <>
       {tagChoices.map((choice, index) => (
-        <label className="checkbox-inline mr-3" key={index}>
-          <input type="checkbox" value={choice} onChange={tagChange} />
+        <label className="checkbox-inline mr-3c checkbox-label" key={index}>
+          <input
+            className="checkbox-button"
+            type="checkbox"
+            value={choice}
+            onChange={tagChange}
+          />
           {" " + choice}
         </label>
       ))}

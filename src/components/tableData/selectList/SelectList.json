@@ -1,0 +1,58 @@
+{
+  "colorList": [
+    "ブラウン",
+    "ブラック",
+    "ブルー",
+    "グレー",
+    "グリーン",
+    "ピンク",
+    "レッド",
+    "シルバー",
+    "ゴールド",
+    "クリア",
+    "オレンジ",
+    "イエロー",
+    "パープル",
+    "ホワイト",
+    "その他"
+  ],
+  "frameTypeList": [
+    "スクエア",
+    "オーバル",
+    "ウェリントン",
+    "ボストン",
+    "ハーフリム",
+    "ラウンド",
+    "フォックス",
+    "ブロー",
+    "リムレス",
+    "アンダーリム",
+    "ティアドロップ",
+    "その他"
+  ],
+  "seriesList": [
+    "Airframe",
+    "JINS CLASSIC",
+    "JINS&SUN",
+    "JINS SWITCH",
+    "JINS Design Project",
+    "JINS SCREEN",
+    "JINS PROTECT",
+    "JINS READING",
+    "その他"
+  ],
+  "nosePadList": ["クリングスタイプ", "フレーム一体型", "その他"],
+  "categoryList": ["メガネ", "サングラス", "老眼鏡", "その他"],
+  "targetGenderList": ["MENS", "WOMEN", "UNISEX", "OTHER", "KIDS&JUNIOR"],
+  "materialChoices": [
+    "セル（アセテート）",
+    "メタル（ステンレス・アルミ）",
+    "セル（TR-90）",
+    "メタル（チタン）",
+    "PES",
+    "ウルテム",
+    "PPSU",
+    "セルロイド",
+    "その他"
+  ]
+}

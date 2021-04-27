@@ -1,42 +1,42 @@
 import React, { useState } from "react";
 import Tags from "../tag/Tags";
+import selectList from "../selectList/SelectList.json";
 
 export default function FrameForm({ frameAdded }) {
   const [frameName, setFrameName] = useState("");
   const [productNumber, setProductNumber] = useState("");
   const [priceTaxExcluded, setPriceTaxExcluded] = useState("");
-  const [priceTax, setPriceTax] = useState("");
-  // const [frameType, setFrameType] = useState([]);
-  // const [series, setSeries] = useState([]);
-  // const [category, setCategory] = useState([]);
-  const [description, setDescription] = useState("");
-  const [keywords, setKeywords] = useState("");
-  const [targetCustomer, setTargetCustomer] = useState("");
-  const [size, setSize] = useState("");
+  const [targetGender, setTargetGender] = useState([]);
+  const [frameType, setFrameType] = useState([]);
+  const [series, setSeries] = useState([]);
+  const [category, setCategory] = useState([]);
+  // const [description, setDescription] = useState("");
+  // const [keywords, setKeywords] = useState("");
+  // const [size, setSize] = useState("");
   const [weight, setWeight] = useState("");
-  // const [nosePad, setNosePad] = useState([]);
+  const [nosePad, setNosePad] = useState([]);
   const [materialFront, setMaterialFront] = useState([]);
-  // const [materialTemple, setMaterialTemple] = useState([]);
-  // const [color, setColor] = useState([]);
+  const [materialTemple, setMaterialTemple] = useState([]);
+  const [color, setColor] = useState([]);
+
   const [count, setCount] = useState(0);
 
   const resetFrameForm = () => {
     setFrameName("");
     setProductNumber("");
     setPriceTaxExcluded("");
-    setPriceTax("");
-    // setFrameType("");
-    // setSeries("");
-    // setCategory("");
-    setDescription("");
-    setKeywords("");
-    setTargetCustomer("");
-    setSize("");
+    setTargetGender("");
+    setFrameType("");
+    setSeries("");
+    setCategory("");
+    // setDescription("");
+    // setKeywords("");
+    // setSize("");
     setWeight("");
-    // setNosePad("");
-    // setMaterialFront("");
-    // setMaterialTemple("");
-    // setColor("");
+    setNosePad("");
+    setMaterialFront("");
+    setMaterialTemple("");
+    setColor("");
     setCount(count + 1);
   };
 
@@ -49,25 +49,25 @@ export default function FrameForm({ frameAdded }) {
           frameName,
           productNumber,
           priceTaxExcluded,
-          priceTax,
-          // frameType,
-          // series,
-          // category,
-          description,
-          keywords,
-          targetCustomer,
-          size,
+          targetGender,
+          frameType,
+          series,
+          category,
+          // description,
+          // keywords,
+          // size,
           weight,
-          // nosePad,
+          nosePad,
           materialFront,
-          // materialTemple,
-          // color,
+          materialTemple,
+          color,
         }),
       });
       resetFrameForm();
       frameAdded();
     } catch (err) {
       console.error(err);
+      window.alert("投稿エラーです");
     }
   };
 
@@ -99,7 +99,7 @@ export default function FrameForm({ frameAdded }) {
           <div className="form-group">
             <label htmlFor="priceTaxExcluded">価格（税抜）</label>
             <input
-              type="number"
+              type="text"
               name="priceTaxExcluded"
               value={priceTaxExcluded}
               className="form-control"
@@ -107,47 +107,62 @@ export default function FrameForm({ frameAdded }) {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="priceTax">価格（税込）</label>
-            <input
-              type="number"
-              name="priceTax"
-              value={priceTax}
+            <label htmlFor="targetGender">性別</label>
+            <select
+              onChange={(e) => setTargetGender(e.target.value)}
               className="form-control"
-              onChange={(e) => setPriceTax(e.target.value)}
-            />
+              name="targetGender"
+            >
+              {selectList.targetGenderList.map((targetGender, index) => (
+                <option value={targetGender} key={index}>
+                  {targetGender}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="frameType">フレームタイプ</label>
+            <select
+              onChange={(e) => setFrameType(e.target.value)}
+              className="form-control"
+              name="frameType"
+            >
+              {selectList.frameTypeList.map((frameType, index) => (
+                <option value={frameType} key={index}>
+                  {frameType}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="series">シリーズ</label>
+            <select
+              onChange={(e) => setSeries(e.target.value)}
+              className="form-control"
+              name="series"
+            >
+              {selectList.seriesList.map((series, index) => (
+                <option value={series} key={index}>
+                  {series}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="category">カテゴリー</label>
+            <select
+              onChange={(e) => setCategory(e.target.value)}
+              className="form-control"
+              name="category"
+            >
+              {selectList.categoryList.map((category, index) => (
+                <option value={category} key={index}>
+                  {category}
+                </option>
+              ))}
+            </select>
           </div>
           {/* <div className="form-group">
-            <label htmlFor="frameType">フレームタイプ</label>
-            <input
-              type="text"
-              name="frameType"
-              value={frameType}
-              className="form-control"
-              onChange={(e) => setFrameType(e.target.value)}
-            />
-            <Tags tagsUpdated={setFrameType} key={count} />
-          </div> */}
-          {/* <div className="form-group">
-            <label htmlFor="series">シリーズ</label>
-            <input
-              type="text"
-              name="series"
-              value={series}
-              className="form-control"
-              onChange={(e) => setSeries(e.target.value)}
-            />
-          </div> */}
-          {/* <div className="form-group">
-            <label htmlFor="cateory">カテゴリ</label>
-            <input
-              type="text"
-              name="category"
-              value={category}
-              className="form-control"
-              onChange={(e) => setCategory(e.target.value)}
-            />
-          </div> */}
-          <div className="form-group">
             <label htmlFor="description">商品説明</label>
             <input
               type="text"
@@ -156,8 +171,8 @@ export default function FrameForm({ frameAdded }) {
               className="form-control"
               onChange={(e) => setDescription(e.target.value)}
             />
-          </div>
-          <div className="form-group">
+          </div> */}
+          {/* <div className="form-group">
             <label htmlFor="keywords">キーワード</label>
             <input
               type="text"
@@ -166,18 +181,8 @@ export default function FrameForm({ frameAdded }) {
               className="form-control"
               onChange={(e) => setKeywords(e.target.value)}
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="targetCustomer">ターゲット</label>
-            <input
-              type="text"
-              name="targetCustomer"
-              value={targetCustomer}
-              className="form-control"
-              onChange={(e) => setTargetCustomer(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
+          </div> */}
+          {/* <div className="form-group">
             <label htmlFor="size">サイズ</label>
             <input
               type="text"
@@ -186,7 +191,7 @@ export default function FrameForm({ frameAdded }) {
               className="form-control"
               onChange={(e) => setSize(e.target.value)}
             />
-          </div>
+          </div> */}
           <div className="form-group">
             <label htmlFor="weight">フレームの重量</label>
             <input
@@ -197,47 +202,50 @@ export default function FrameForm({ frameAdded }) {
               onChange={(e) => setWeight(e.target.value)}
             />
           </div>
-          {/* <div className="form-group">
+          <div className="form-group">
             <label htmlFor="targetNosePad">鼻パッドの形状</label>
-            <input
-              type="text"
-              name="nosePad"
-              value={nosePad}
-              className="form-control"
+            <select
               onChange={(e) => setNosePad(e.target.value)}
-            />
-          </div> */}
+              className="form-control"
+              name="nosePad"
+            >
+              {selectList.nosePadList.map((nosePad, index) => (
+                <option value={nosePad} key={index}>
+                  {nosePad}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="form-group">
             <label htmlFor="materialFront">フレーム素材（フロント）: </label>
-            {/* <input
-              type="text"
-              name="materialFront"
-              value={materialFront}
-              className="form-control"
-              onChange={(e) => setMaterialFront(e.target.value)}
-            /> */}
-            <Tags tagsUpdated={setMaterialFront} key={count} />
+            <Tags
+              tagsUpdated={setMaterialFront}
+              key={count}
+              tagChoices={selectList.materialChoices}
+            />
           </div>
-          {/* <div className="form-group">
-            <label htmlFor="materialTemple">フレーム素材（テンプル）</label>
-            <input
-              type="text"
-              name="materialTemple"
-              value={materialTemple}
-              className="form-control"
-              onChange={(e) => setMaterialTemple(e.target.value)}
+          <div className="form-group">
+            <label htmlFor="materialTemple">フレーム素材（テンプル）：</label>
+            <Tags
+              tagsUpdated={setMaterialTemple}
+              key={count}
+              tagChoices={selectList.materialChoices}
             />
-          </div> */}
-          {/* <div className="form-group">
+          </div>
+          <div className="form-group">
             <label htmlFor="Color">カラー</label>
-            <input
-              type="text"
-              name="color"
-              value={color}
-              className="form-control"
+            <select
               onChange={(e) => setColor(e.target.value)}
-            />
-          </div> */}
+              className="form-control"
+              name="color"
+            >
+              {selectList.colorList.map((color, index) => (
+                <option value={color} key={index}>
+                  {color}
+                </option>
+              ))}
+            </select>
+          </div>
           <button type="submit" className="btn btn-primary">
             追加する
           </button>
