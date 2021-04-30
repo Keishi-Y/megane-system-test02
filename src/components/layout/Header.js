@@ -20,11 +20,7 @@ export const Header = () => {
       expand="lg"
       className="justify-content-between"
     >
-      {isAuthenticated ? (
-        <Navbar.Brand href="/mypage">{config.app.name}</Navbar.Brand>
-      ) : (
-        <Navbar.Brand href="/">{config.app.name}</Navbar.Brand>
-      )}
+      <Navbar.Brand href="/">{config.app.name}</Navbar.Brand>
       <LoginButton />
       <UserProfileDropdown />
     </Navbar>
