@@ -14,10 +14,10 @@ import AccountInfo from "./pages/AccountInfo";
 import Setting from "./pages/Setting";
 import CreateClinicCharts from "./pages/CreateClinicCharts";
 import CreateFrameInfo from "./pages/CreateFrameInfo";
-import MyPage from "./pages/MyPage";
+// import MyPage from "./pages/MyPage";
 
 function App() {
-  const { isLoading, isAuthenticated } = useAuth0();
+  const { isLoading } = useAuth0();
   if (isLoading) {
     return <p></p>;
   }
@@ -26,11 +26,7 @@ function App() {
     <Router>
       <Layout>
         <Switch>
-          {isAuthenticated ? (
-            <Route path="/mypage" exact component={MyPage} />
-          ) : (
-            <Route path="/" exact component={Home} />
-          )}
+          <Route path="/" exact component={Home} />
           <ProtectedRoute path="/clinic-charts" component={ClinicCharts} />
           <ProtectedRoute
             path="/create-clinic-charts"

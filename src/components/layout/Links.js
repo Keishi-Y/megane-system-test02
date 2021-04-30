@@ -34,11 +34,10 @@ export const Links = () => {
 
   return (
     <Nav className="flex-column">
-      {isAuthenticated ? (
+      {/* {isAuthenticated ? (
         <LinkItem pathname="/mypage" pageName="Home" icon={<House />} />
-      ) : (
-        <LinkItem pathname="/" pageName="Home" icon={<House />} />
-      )}
+      ) : ( */}
+      <LinkItem pathname="/" pageName="Home" icon={<House />} />
       <LinkItem
         pathname="/clinic-charts"
         pageName="カルテ編集"
