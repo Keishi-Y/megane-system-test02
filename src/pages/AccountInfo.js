@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { UserProfileAvatar } from "../components/user/UserProfileAvatar";
+import { Link } from "react-router-dom";
 
 const AccountInfo = () => {
   const { user } = useAuth0();
@@ -8,7 +9,10 @@ const AccountInfo = () => {
   return (
     <div className="container mt-5">
       <h1 className=" mb-5 text-center">アカウント情報</h1>
-      <div className="card mt-5 pb-5 pt-5">
+      <Link to="/setting" className="mb-5 btn btn-dark">
+        設定一覧に戻る
+      </Link>
+      <div className="card pb-5 pt-5">
         <div className="card-body w-50 mx-auto d-flex justify-content-center flex-column">
           <UserProfileAvatar
             style={{ width: "100px" }}

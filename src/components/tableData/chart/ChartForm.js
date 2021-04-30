@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function ChartForm({ chartAdded }) {
+  const [updateDate, setUpdateDate] = useState("");
   const [name, setName] = useState("");
   const [birthday, setBirthday] = useState("");
   const [tel, setTel] = useState("");
@@ -10,6 +11,7 @@ export default function ChartForm({ chartAdded }) {
   const [lastVisit, setLastVisit] = useState("");
 
   const resetForm = () => {
+    setUpdateDate("");
     setName("");
     setBirthday("");
     setTel("");
@@ -18,13 +20,13 @@ export default function ChartForm({ chartAdded }) {
     setFirstVisit("");
     setLastVisit("");
   };
-
   const submitChart = async (e) => {
     e.preventDefault();
     try {
       await fetch("/api/charts", {
         method: "POST",
         body: JSON.stringify({
+          updateDate,
           name,
           birthday,
           tel,
@@ -38,14 +40,30 @@ export default function ChartForm({ chartAdded }) {
       chartAdded();
     } catch (err) {
       console.error(err);
+      window.alert("投稿エラーです");
     }
   };
+
+  let date = new Date().toLocaleString();
+  useEffect(() => {
+    setUpdateDate(date);
+  }, [date]);
 
   return (
     <div className="card">
       <div className="card-header">カルテを追加する</div>
       <div className="card-body">
         <form className="" onSubmit={submitChart}>
+          <div className="form-group">
+            <label htmlFor="updateDate">登録日時</label>
+            <input
+              type="text"
+              name="updateDate"
+              value={updateDate}
+              className="form-control"
+              onChange={(e) => setUpdateDate(e.target.value)}
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="name">名前</label>
             <input

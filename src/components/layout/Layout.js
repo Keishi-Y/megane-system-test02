@@ -5,10 +5,16 @@ import { Links } from "./Links";
 export const Layout = ({ children }) => {
   return (
     <>
-      <Container>
-        <Header />
+      <Header />
+      <Container className="mb-5">
         <Row>
-          <Col xs={2} style={{ minWidth: "250px" }}>
+          <Col
+            xs={2}
+            style={{
+              minWidth: "250px",
+              borderRight: "1px solid #ddd",
+            }}
+          >
             <Links />
           </Col>
           <Col xs={8}>{children}</Col>

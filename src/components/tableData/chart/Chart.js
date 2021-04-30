@@ -16,10 +16,12 @@ export default function Chart({ chart, refreshCharts }) {
   };
 
   return (
-    <div className="list-group-item">
+    <div className="list-group-item mt-3">
+      <span className="d-block mt-4">最終更新日時：{chart.updateDate}</span>
       <h4 className="list-group-item-heading mt-4 mb-4">
-        お名前：{chart.name}
+        No.{chart.sort_id}　お名前：{chart.name}
       </h4>
+      <p className="list-group-item-heading">顧客ID：{chart.id}</p>
       <p className="list-group-item-heading">生年月日：{chart.birthday}</p>
       <p className="list-group-item-heading">電話番号：{chart.tel}</p>
       <p className="list-group-item-heading">メールアドレス：{chart.email}</p>

@@ -1,12 +1,13 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+
 import {
   House,
   CardHeading,
-  InfoCircle,
-  PersonFill,
   Eyeglasses,
+  GearFill,
 } from "react-bootstrap-icons";
 import TextWithIcon from "../text/TextWithIcon";
 
@@ -29,9 +30,15 @@ const LinkItem = ({ pathname, pageName, icon }) => {
 };
 
 export const Links = () => {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <Nav className="flex-column">
-      <LinkItem pathname="/" pageName="Home" icon={<House />} />
+      {isAuthenticated ? (
+        <LinkItem pathname="/mypage" pageName="Home" icon={<House />} />
+      ) : (
+        <LinkItem pathname="/" pageName="Home" icon={<House />} />
+      )}
       <LinkItem
         pathname="/clinic-charts"
         pageName="カルテ編集"
@@ -42,16 +49,12 @@ export const Links = () => {
         pageName="フレーム情報編集"
         icon={<Eyeglasses />}
       />
-      <LinkItem
+      {/* <LinkItem
         pathname="/account-info"
         pageName="アカウント情報"
         icon={<PersonFill />}
-      />
-      <LinkItem
-        pathname="/app-info"
-        pageName="アプリ情報"
-        icon={<InfoCircle />}
-      />
+      /> */}
+      <LinkItem pathname="/setting" pageName="アプリ設定" icon={<GearFill />} />
     </Nav>
   );
 };

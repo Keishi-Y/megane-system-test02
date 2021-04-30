@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Tags from "../tag/Tags";
 import selectList from "../selectList/SelectList.json";
 
 export default function FrameForm({ frameAdded }) {
+  const [updateDate, setUpdateDate] = useState("");
   const [frameName, setFrameName] = useState("");
   const [productNumber, setProductNumber] = useState("");
   const [priceTaxExcluded, setPriceTaxExcluded] = useState("");
@@ -22,6 +23,7 @@ export default function FrameForm({ frameAdded }) {
   const [count, setCount] = useState(0);
 
   const resetFrameForm = () => {
+    setUpdateDate("");
     setFrameName("");
     setProductNumber("");
     setPriceTaxExcluded("");
@@ -46,6 +48,7 @@ export default function FrameForm({ frameAdded }) {
       await fetch("/api/frames", {
         method: "POST",
         body: JSON.stringify({
+          updateDate,
           frameName,
           productNumber,
           priceTaxExcluded,
@@ -71,11 +74,26 @@ export default function FrameForm({ frameAdded }) {
     }
   };
 
+  let date = new Date().toLocaleString();
+  useEffect(() => {
+    setUpdateDate(date);
+  }, [date]);
+
   return (
     <div className="card">
       <div className="card-header">フレーム情報を追加する</div>
       <div className="card-body">
         <form className="" onSubmit={submitFrame}>
+          <div className="form-group">
+            <label htmlFor="updateDate">登録日時</label>
+            <input
+              type="text"
+              name="updateDate"
+              value={updateDate}
+              className="form-control"
+              onChange={(e) => setUpdateDate(e.target.value)}
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="frameName">品名</label>
             <input
@@ -220,7 +238,7 @@ export default function FrameForm({ frameAdded }) {
             <label htmlFor="materialFront">フレーム素材（フロント）: </label>
             <Tags
               tagsUpdated={setMaterialFront}
-              key={count}
+              // key={count}
               tagChoices={selectList.materialChoices}
             />
           </div>
@@ -228,7 +246,7 @@ export default function FrameForm({ frameAdded }) {
             <label htmlFor="materialTemple">フレーム素材（テンプル）：</label>
             <Tags
               tagsUpdated={setMaterialTemple}
-              key={count}
+              // key={count}
               tagChoices={selectList.materialChoices}
             />
           </div>

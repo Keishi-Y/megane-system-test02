@@ -16,9 +16,10 @@ export default function Frame({ frame, refreshFrames }) {
   };
 
   return (
-    <div className="list-group-item">
+    <div className="list-group-item mt-3">
+      <span className="d-block mt-4">最終更新日時：{frame.updateDate}</span>
       <h4 className="list-group-item-heading mt-4 mb-4">
-        商品名：{frame.frameName}
+        No.{frame.sort_id}　商品名：{frame.frameName}
       </h4>
       <p className="list-group-item-heading">品番：{frame.productNumber}</p>
       <p className="list-group-item-heading">
